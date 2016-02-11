@@ -7,10 +7,12 @@ from main.models import Post
 from main.forms import PostForm, DeletePostForm
 from main.views.thread import view
 from main.views.paging import page as home
+from main.views.decorators import vospapiers
 
 import json
 
 
+@vospapiers
 def raw(request, post_id):
     post = get_object_or_404(Post, id=int(post_id), active=True)
     infos = {
@@ -26,6 +28,7 @@ def raw(request, post_id):
     return HttpResponse(json.dumps(infos))
 
 
+@vospapiers
 def edit(request, post_id):
     post = get_object_or_404(Post, id=int(post_id), active=True)
     if request.method == 'POST':
@@ -49,6 +52,7 @@ def edit(request, post_id):
     return render_to_response('edit.html', context)
 
 
+@vospapiers
 def delete(request, post_id):
     post = get_object_or_404(Post, id=int(post_id), active=True)
     if request.method == 'POST':
@@ -71,6 +75,7 @@ def delete(request, post_id):
     return render_to_response('delete.html', context)
 
 
+@vospapiers
 def history(request, post_id):
     post = get_object_or_404(Post, id=int(post_id), active=True)
     hist = [post]

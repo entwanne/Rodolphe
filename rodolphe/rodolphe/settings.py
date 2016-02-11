@@ -93,6 +93,9 @@ MEDIA_URL = '/media/'
 
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),)
 
+# PASSWORD allow to authenticate users with digit based password.
+# No effect if PASSWORD is falsy.
+PASSWORD = "0123"
 
 # Local settings
 
