@@ -2,29 +2,30 @@ from django.conf.urls import patterns, include, url
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic.base import TemplateView
+from main.views import paging, thread, post, tag, search, about
 
 from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', 'main.views.paging.page'),
+                       url(r'^$', paging.page, name="home"),
 
-    url(r'^view/(?P<post_id>\d+)$', 'main.views.thread.view'),
-    url(r'^new$', 'main.views.thread.new'),
+    url(r'^view/(?P<post_id>\d+)$', thread.view, name="view"),
+    url(r'^new$', thread.new),
 
-    url(r'^raw/(?P<post_id>\d+)$', 'main.views.post.raw'),
-    url(r'^edit/(?P<post_id>\d+)$', 'main.views.post.edit'),
-    url(r'^del/(?P<post_id>\d+)$', 'main.views.post.delete'),
-    url(r'^h/(?P<post_id>\d+)$', 'main.views.post.history'),
+    url(r'^raw/(?P<post_id>\d+)$', post.raw, name="raw"),
+    url(r'^edit/(?P<post_id>\d+)$', post.edit, name="edit"),
+    url(r'^del/(?P<post_id>\d+)$', post.delete, name="delete"),
+    url(r'^h/(?P<post_id>\d+)$', post.history, name="history"),
 
-    url(r'^tags$', 'main.views.tag.index'),
-    url(r'^tag/(?P<pattern>(~?\w+)(\|~?\w+)*)$', 'main.views.tag.search'),
+    url(r'^tags$', tag.index),
+    url(r'^tag/(?P<pattern>(~?\w+)(\|~?\w+)*)$', tag.search, name="search_tag"),
 
-    url(r'^search$', 'main.views.search.search'),
+    url(r'^search$', search.search, name="search"),
 
-    url(r'^about$', 'main.views.about.about'),
-    url(r'^markdown$', 'main.views.about.markdown'),
-    url(r'^render$', 'main.views.about.render'),
+    url(r'^about$', about.about, name="about"),
+    url(r'^markdown$', about.markdown, name="about"),
+    url(r'^render$', about.render),
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^captcha/', include('captcha.urls')),
