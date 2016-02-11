@@ -14,7 +14,7 @@
 
   <nav class="navbar" role="navigation">
     <ul class="nav navbar-nav">
-      <li><a href="{% url 'main.views.home' %}">{% bootstrap_icon "home" %} {% trans "home" %}</a></li>
+      <li><a href="{% url 'home' %}">{% bootstrap_icon "home" %} {% trans "home" %}</a></li>
       <li><a href="{% url 'main.views.thread.new' %}">{% bootstrap_icon "plus" %} {% trans "participate" %}</a></li>
       <li><a href="{% url 'main.views.about.about' %}">{% bootstrap_icon "info-sign" %} {% trans "about" %}</a></li>
       <li><a href="{% url 'main.views.tag.index' %}">{% bootstrap_icon "tag" %} {% trans "tags" %}</a></li>

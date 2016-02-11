@@ -4,8 +4,10 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from main.models import Post
 from main.forms import PostForm
+from main.views.decorators import vospapiers
 
 
+@vospapiers
 def page(request):
     paginator = Paginator(Post.objects.filter(active=True, parent=None)
                           .order_by('-last_resp_at'), 10)

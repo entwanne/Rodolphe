@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <style>
+      form {
+        text-align: center;
+      }
+      button {
+        width: 100px;
+        height: 100px;
+        font-size: 5em;
+        margin: 10px;
+      }
+    </style>
+    <script>
+      function compose(e) {
+       	num = e.target.innerHTML;
+	document.getElementById("number").value	+= num;
+      }
+    </script>
+  </head>
+  <body>
+    <form action="">
+      <input id="number" name="number" type="text" />
+      <br/>
+      <button id="box">&#9990;</button>
+      <br />
+      <button onclick="compose(event); return false;">1</button>
+      <button onclick="compose(event); return false;">2</button>
+      <button onclick="compose(event); return false;">3</button>
+      <br />
+      <button onclick="compose(event); return false;">4</button>
+      <button onclick="compose(event); return false;">5</button>
+      <button onclick="compose(event); return false;">6</button>
+      <br />
+      <button onclick="compose(event); return false;">7</button>
+      <button onclick="compose(event); return false;">8</button>
+      <button onclick="compose(event); return false;">9</button>
+      <br/>
+      <button onclick="compose(event); return false;">0</button>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+  </body>
+</html>
+

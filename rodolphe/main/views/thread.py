@@ -3,8 +3,10 @@ from django.template import RequestContext
 
 from main.models import Post
 from main.forms import PostForm
+from main.views.decorators import vospapiers
 
 
+@vospapiers
 def view(request, post_id):
     post = get_object_or_404(Post, id=int(post_id), active=True, parent=None)
     if request.method == 'POST':
@@ -24,6 +26,7 @@ def view(request, post_id):
     return render_to_response('view.html', context)
 
 
+@vospapiers
 def new(request):
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES, instance=Post.default())

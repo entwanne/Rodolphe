@@ -8,12 +8,14 @@ from main.models import Post, Tag
 from main.forms import PostForm
 from utils.search import get_search
 from utils.tags import TagsSet
+from main.views.decorators import vospapiers
 
 import re
 from collections import defaultdict
 from urllib.parse import urlencode
 
 
+@vospapiers
 def index(request):
     indexed_tags = defaultdict(list)
     for tag in Tag.objects.all():

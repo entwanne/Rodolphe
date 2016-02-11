@@ -6,8 +6,9 @@ from django.utils.translation import ugettext as _
 from main.models import Post
 from main.forms import PostForm
 from utils.search import get_search
+from main.views.decorators import vospapiers
 
-
+@vospapiers
 def search(request):
     q, search = get_search(request)
     paginator = Paginator(Post.objects.filter(q, active=True)
